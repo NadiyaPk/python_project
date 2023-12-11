@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    form{
+    align:center;
+         background:linear-gradient(45deg,white,black,grey);
+         width:12cm;
+          padding:10pix 20pix;
+          border-radius:10px;
+       }
+label{
+    color:white;
+     width:140px;
+     display:inline-block;
+     margin:0.2cm;
+     font-size:18px;
+     font-weight:bold;
+    }
+        input{
+        padding:4px;
+        margin:5px;
+        font-size:16px;
+        border-radius:10px;
+        border:1px solid;
+        width:7cm;
+        }
+        h2
+        {
+        margin-top:100px;
+        text-align:center;
+        text-decoration:underline;
+
+        font-size:24px;
+        }
+        body{
+        background-image:url('{% static 'images/pexels-johannes-plenio-1103970.jpg' %}');
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size:100% 100%;
+        }
+    </style>
+</head>
+<body>
+ <h2> Registration Form</h2>
+ <center>
+  <form  action="register" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Enter your username"><br>
+      <input type="email" name="email" placeholder="Enter your email"><br>
+      <input type="password" name="password" placeholder="Enter your password"><br>
+      <input type="password" name="password1" placeholder="Enter confirmation password"><br>
+      <center><input type="submit" value="Register"></center>
+  </form>
+     </center>
+   <div>
+       {% for message in messages %}
+       <h3>{{message}}</h3>
+       {% endfor %}
+   </div>
+</body>
+</html>
